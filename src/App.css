@@ -13,7 +13,7 @@ body {
   background: #f6f8fd;
 }
 body.frontpage-bg {
-  background: url('./v915-techi-004-f.jpg') no-repeat center center fixed;
+  background: url('./v915-techi-004-f.png') no-repeat center center fixed;
   background-size: cover;
 }
 
@@ -23,7 +23,7 @@ body.frontpage-bg {
   padding: 2rem 1rem;
   position: relative;
   z-index: 1;
-  background: url('./5605281.jpg') no-repeat center center fixed;
+  background: url('./5605281.png') no-repeat center center fixed;
   background-size: cover;
   min-height: 100vh;
 }
@@ -130,7 +130,7 @@ body.frontpage-bg {
   padding: 2rem 1rem;
   position: relative;
   z-index: 1;
-  background: url('./5605281.jpg') no-repeat center center fixed;
+  background: url('./5605281.png') no-repeat center center fixed;
   background-size: cover;
   min-height: 100vh;
 }
