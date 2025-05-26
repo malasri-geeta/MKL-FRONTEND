@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import './App.css'
 
 // Set your backend base URL here
-const BACKEND_BASE = "https://your-backend.onrender.com/api/customers";
+const BACKEND_BASE = "https://mkl-frontend-3416.onrender.com/api/customers";
 
 // Example usage:
 // fetch(`${BACKEND_BASE}`)
