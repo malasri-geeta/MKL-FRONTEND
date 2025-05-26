@@ -1,6 +1,16 @@
 import { useState, useEffect } from 'react'
 import './App.css'
 
+// Set your backend base URL here
+const BACKEND_BASE = "https://your-backend.onrender.com/api/customers";
+
+// Example usage:
+// fetch(`${BACKEND_BASE}`)
+// fetch(`${BACKEND_BASE}/due`)
+// fetch(`${BACKEND_BASE}/${id}`)
+// fetch(`${BACKEND_BASE}/${id}/terminate`)
+// fetch(`${BACKEND_BASE}/${id}/services`)
+
 function CustomerForm({ onAdd }) {
   const [form, setForm] = useState({
     name: '',
@@ -245,7 +255,7 @@ function App() {
   // Fetch customers from backend API after login and after any change
   const fetchCustomers = async () => {
     try {
-      const res = await fetch('http://localhost:5000/api/customers')
+      const res = await fetch(`${BACKEND_BASE}`)
       if (!res.ok) throw new Error('Failed to fetch customers')
       const data = await res.json()
       setCustomers(data)
@@ -256,7 +266,7 @@ function App() {
 
   useEffect(() => {
     if (isLoggedIn) {
-      fetch('http://localhost:5000/api/customers')
+      fetch(`${BACKEND_BASE}`)
         .then(res => res.json())
         .then(data => setCustomers(data))
         .catch(() => setCustomers([]));
@@ -287,7 +297,7 @@ function App() {
   // Add customer to backend
   const handleAddCustomer = async (customer) => {
     try {
-      const res = await fetch('http://localhost:5000/api/customers', {
+      const res = await fetch(`${BACKEND_BASE}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(customer),
@@ -313,7 +323,7 @@ function App() {
     e.preventDefault()
     try {
       const id = customers[editIndex]._id || customers[editIndex].id // adjust for your backend
-      const res = await fetch(`http://localhost:5000/api/customers/${id}`, {
+      const res = await fetch(`${BACKEND_BASE}/${id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(editForm),
@@ -347,7 +357,7 @@ function App() {
   const handleDeleteCustomer = async (index) => {
     try {
       const id = customers[index]._id || customers[index].id;
-      const res = await fetch(`http://localhost:5000/api/customers/${id}`, {
+      const res = await fetch(`${BACKEND_BASE}/${id}`, {
         method: 'DELETE',
       });
       if (!res.ok) throw new Error('Failed to delete customer');
